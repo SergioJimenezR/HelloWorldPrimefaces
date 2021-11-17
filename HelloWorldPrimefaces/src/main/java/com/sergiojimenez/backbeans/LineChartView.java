@@ -12,6 +12,7 @@ import org.primefaces.model.chart.LineChartSeries;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.sergiojimenez.controllers.PruebaController;
 import com.sergiojimenez.dao.DataService;
 
 @Component
@@ -20,6 +21,10 @@ import com.sergiojimenez.dao.DataService;
 public class LineChartView {
 	@Autowired
 	private DataService dataService;
+
+	@Autowired
+	PruebaController pruebaController;
+
 	private LineChartModel lineModel;
 
 	private int numero;
@@ -49,6 +54,12 @@ public class LineChartView {
 
 		numero = 1;
 
+		System.out.println("init");
+		dataService.pruebaD1();
+		dataService.pruebaD2("frase");
+		pruebaController.pruebaP1();
+		pruebaController.pruebaP2("frase");
+
 	}
 
 	public LineChartModel getLineModel() {
@@ -60,6 +71,11 @@ public class LineChartView {
 	}
 
 	public int getNumero() {
+		System.out.println("getNumero");
+		dataService.pruebaD1();
+		dataService.pruebaD2("frase");
+		pruebaController.pruebaP1();
+		pruebaController.pruebaP2("frase");
 		return numero;
 	}
 
