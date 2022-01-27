@@ -1,7 +1,9 @@
 package com.sergiojimenez.backbeans;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,6 +21,10 @@ public class BancoControl {
 
 	private List<Banco> listaBancos;
 	private Banco banco;
+
+	@PostConstruct
+	public void init() {
+	}
 
 	public BancoControl() {
 		banco = new Banco();
@@ -68,6 +74,18 @@ public class BancoControl {
 		limpiarBanco();
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Título", "Descripción"));
+	}
+
+	private String numero;
+
+	public String getNumero() {
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		System.out.println(params.get("token"));
+		return "a";
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 }
